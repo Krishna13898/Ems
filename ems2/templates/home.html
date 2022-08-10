@@ -1,0 +1,51 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <br>
+        <div style="float: right">
+        <a href="{% url 'add' %}"  class="btn btn-success "><span>Add New Employee</span></a>
+        </div>
+        <br>
+        <br><br>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Emp ID</th>
+                    <th>Name</th>
+                    <th>Date of Birth</th>
+                    <th>City</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in emp %}
+                <tr>
+                    <td>{{i.empId}}</td>
+                    <td>{{i.first_name}} {{i.last_name}}</td>
+                    <td>{{i.dob}}</td>
+                    <td>{{i.city}}</td>
+                    <td>{{i.address}}</td>
+                    <td>{{i.mobile}}</td>
+                    <td>
+                        <a href="{% url 'update' i.id %}" class="btn btn-info" >Edit</a>
+                        <a href="{% url 'delete' i.id %}" class="btn btn-danger" >Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock content %}
+    
+    
+
+
+
+
+
+
